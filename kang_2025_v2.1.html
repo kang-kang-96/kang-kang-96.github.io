@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>康雁雁 - 简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            line-height: 1.3; /* 减小行高 */
+            font-size: 12px; /* 减小字体大小 */
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 15px; /* 减小页面内边距 */
+            background-color: #f8fbff; /* 淡蓝色背景 */
+        }
+        
+        /* 个人信息表格 */
+        .header-table {
+            width: 100%;
+            margin-bottom: 0px;
+            border-collapse: collapse;
+            background-color: #ffffff; /* 白色背景 */
+            border-radius: 6px; /* 减小圆角 */
+            box-shadow: 0 1px 6px rgba(0, 123, 255, 0.08); /* 减小阴影 */
+            overflow: hidden;
+        }
+        
+        .header-table td {
+            vertical-align: middle;
+            padding: 8px; /* 减小内边距 */
+        }
+        
+        h1 {
+            font-size: 24px; /* 减小字体大小 */
+            margin-bottom: 3px; /* 减小下边距 */
+            color: #2c5282; /* 深蓝色标题 */
+            border-bottom: none !important;
+        }
+
+        /* 添加出生年月信息样式 */
+        .birth-info {
+            display: flex;
+            align-items: center;
+            margin-top: 0px;
+            color: #4a5568;
+            font-size: 11px; /* 减小字体大小 */
+        }
+
+        .birth-info img {
+            width: 12px; /* 减小图标大小 */
+            height: 12px;
+            margin-right: 6px; /* 减小间距 */
+            vertical-align: middle;
+            filter: brightness(0.7); /* 使图标颜色更柔和 */
+        }
+
+        .contact-info span {
+            display: block;
+            margin-bottom: 4px; /* 减小间距 */
+            font-size: 11px; /* 减小字体大小 */
+            color: #4a5568;
+        }
+        
+        .contact-info img {
+            width: 12px; /* 减小图标大小 */
+            height: 12px;
+            margin-right: 6px; /* 减小间距 */
+            vertical-align: middle;
+            filter: brightness(0.7); /* 使图标颜色更柔和 */
+        }
+        
+        /* 修改照片容器样式 */
+        .photo-cell {
+            text-align: right;
+            padding-left: 12px; /* 减小内边距 */
+        }
+
+        .portrait-container {
+            width: 60px; /* 减小宽度 */
+            height: 78px; /* 减小高度 (3:4比例) */
+            overflow: hidden;
+            border-radius: 3px; /* 减小圆角 */
+            background-color: #edf2f7; /* 淡蓝色背景 */
+            box-shadow: 0 1px 4px rgba(0, 123, 255, 0.1); /* 减小阴影 */
+        }
+
+        .portrait-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+        
+        /* 章节标题 */
+        h2 {
+            font-size: 14px; /* 减小字体大小 */
+            margin-top: 14px; /* 减小上边距 */
+            margin-bottom: 5px; /* 减小下边距 */
+            padding-bottom: 3px; /* 减小内边距 */
+            border-bottom: 1.5px solid #bee3f8; /* 减小边框宽度 */
+            color: #2c5282; /* 深蓝色标题 */
+            line-height: 1.1; /* 减小行高 */
+        }
+        
+        h2 img {
+            width: 18px; /* 减小图标大小 */
+            height: 18px;
+            margin-right: 6px; /* 减小间距 */
+            vertical-align: middle;
+            filter: brightness(0.8); /* 使图标颜色更柔和 */
+        }
+        
+        /* 紧凑版章节标题 - 针对次要部分 */
+        h2.compact-title {
+            margin-top: 8px;
+            margin-bottom: 3px;
+            padding-bottom: 2px;
+        }
+        
+        /* 修改公司信息样式 */
+        .company-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3px; /* 减小间距 */
+            padding: 8px; /* 减小内边距 */
+            background-color: #ffffff;
+            border-radius: 4px; /* 减小圆角 */
+            box-shadow: 0 1px 3px rgba(0, 123, 255, 0.05); /* 减小阴影 */
+        }
+
+        .company-logo-container {
+            width: 45px; /* 减小宽度 */
+            height: 33.75px; /* 按比例减小高度 */
+            margin-right: 8px; /* 减小间距 */
+            flex-shrink: 0;
+            background-color: transparent; /* 改为透明背景 */
+            border-radius: 3px; /* 减小圆角 */
+            padding: 4px; /* 减小内边距 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .company-text {
+            flex: 1;
+        }
+
+        .company-line {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 1px; /* 减小间距 */
+            font-size: 12px; /* 减小字体大小 */
+            line-height: 1.2; /* 减小行高 */
+        }
+
+        .company-line strong {
+            margin-right: 6px; /* 减小间距 */
+            color: #2d3748; /* 深灰色文字 */
+        }
+
+        .job-title {
+            font-weight: normal;
+            color: #4a5568; /* 中灰色 */
+        }
+        
+        /* 修改公司描述样式，保持原有blockquote的视觉风格 */
+        .company-description {
+            color: #718096; /* 浅灰色文字 */
+            border-left: 2px solid #bee3f8; /* 减小边框宽度 */
+            padding: 6px 10px 6px 16px; /* 减小内边距 */
+            margin: 2px 0 8px 4px; /* 减小外边距 */
+            font-size: 11.5px; /* 减小字体大小 */
+            line-height: 1.3; /* 减小行高 */
+            background-color: #f7fafc; /* 非常淡的蓝色背景 */
+            border-radius: 0 3px 3px 0; /* 减小圆角 */
+        }
+        
+        .company-description ul {
+            margin: 0;
+            padding-left: 12px; /* 减小内边距 */
+        }
+        
+        .company-description li {
+            margin-bottom: 3px; /* 减小间距 */
+            list-style-type: disc;
+            color: #718096;
+            font-size: 11.5px; /* 减小字体大小 */
+            line-height: 1.3; /* 减小行高 */
+        }
+        
+        .company-description li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 公司描述中的加粗效果 */
+        .company-description strong {
+            color: #4a5568;
+            font-weight: 600;
+            background-color: rgba(190, 227, 248, 0.3); /* 淡蓝色背景 */
+            text-decoration: underline;
+            text-decoration-color: rgba(74, 85, 104, 0.4); /* 半透明的灰色下划线 */
+            text-underline-offset: 3px; /* 减小偏移 */
+            text-decoration-thickness: 0.8px; /* 减小粗细 */
+        }
+
+        /* 统一内容卡片样式 */
+        .section-item, .content-card {
+            margin-bottom: 10px; /* 减小间距 */
+            padding: 8px; /* 减小内边距 */
+            background-color: #ffffff;
+            border-radius: 4px; /* 减小圆角 */
+            box-shadow: 0 1px 3px rgba(0, 123, 255, 0.05); /* 减小阴影 */
+        }
+        
+        /* 紧凑版内容卡片 - 针对次要部分 */
+        .content-card.compact-card {
+            padding: 6px 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* 修改section标题样式 */
+        .section-item p {
+            margin-bottom: 4px; /* 减小间距 */
+            color: #2d3748;
+        }
+
+        .section-item p strong {
+            margin-bottom: 2px; /* 减小间距 */
+            color: #2c5282; /* 深蓝色 */
+            background-color: rgba(190, 227, 248, 0.3); /* 淡蓝色背景 */
+            text-decoration: none; /* 去掉原来strong的下划线 */
+            padding: 0 1px; /* 减小内边距 */
+        }
+
+        /* 添加斜体下划线的样式 */
+        .section-item p em {
+            font-style: italic;
+            text-decoration: underline;
+            text-decoration-color: rgba(44, 82, 130, 0.5); /* 半透明的深蓝色下划线 */
+            text-underline-offset: 2px; /* 减小偏移 */
+            text-decoration-thickness: 0.8px; /* 减小粗细 */
+            color: #4a5568; /* 中灰色 */
+            font-size: 11.5px; /* 减小字体大小 */
+        }
+        
+        /* 列表样式 */
+        ul {
+            margin-left: 16px; /* 减小缩进 */
+            margin-bottom: 0;
+        }
+        
+        li {
+            margin-bottom: 3px; /* 减小间距 */
+            line-height: 1.3; /* 减小行高 */
+            color: #4a5568;
+            font-size: 11.5px; /* 减小字体大小 */
+        }
+        
+        /* 紧凑版列表样式 - 针对次要部分 */
+        .compact-card ul {
+            margin-left: 12px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+        
+        .compact-card li {
+            margin-bottom: 2px;
+            line-height: 1.2;
+            padding-left: 0;
+        }
+        
+        /* 加粗样式 */
+        strong {
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        /* 技能部分 */
+        .skills-list li {
+            list-style-type: none;
+            margin-left: 0;
+            margin-bottom: 3px; /* 减小间距 */
+            padding-left: 4px; /* 减小内边距 */
+            border-left: 1.5px solid #bee3f8; /* 减小边框宽度 */
+            padding-left: 8px; /* 减小内边距 */
+            font-size: 11.5px; /* 减小字体大小 */
+            line-height: 1.3; /* 减小行高 */
+        }
+        
+        /* 打印优化 */
+        @media print {
+            /* 确保颜色正常打印 */
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background-color: white !important;
+                padding: 8px !important; /* 减小打印内边距 */
+                font-size: 11px !important; /* 打印时更小字体 */
+                line-height: 1.2 !important; /* 打印时更小行高 */
+            }
+            
+            .header-table, .company-info, .section-item, .content-card {
+                box-shadow: none !important;
+                border: 0.5px solid #e2e8f0 !important; /* 减小边框宽度 */
+            }
+            
+            h1 {
+                font-size: 22px !important; /* 打印时更小字体 */
+            }
+            
+            h2 {
+                font-size: 13px !important; /* 打印时更小字体 */
+                margin-top: 12px !important; /* 打印时减小间距 */
+                margin-bottom: 4px !important; /* 打印时减小间距 */
+            }
+            
+            h2.compact-title {
+                margin-top: 6px !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .portrait-container {
+                width: 55px !important; /* 打印时更小照片 */
+                height: 71px !important; /* 保持3:4比例 */
+            }
+            
+            .compact-card {
+                padding: 4px 6px !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .compact-card li {
+                margin-bottom: 1px !important;
+                line-height: 1.15 !important;
+            }
+        }
+        
+        /* 全局链接颜色（如果有链接） */
+        a {
+            color: #3182ce;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #2c5282;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 个人信息表格 -->
+    <table class="header-table">
+        <tr>
+            <td style="width: 40%;">
+                <h1>康雁雁</h1>
+                <div class="birth-info">
+                    <img src="assets/date.svg" alt="生日图标">
+                    出生年月: 1996.07
+                </div>
+            </td>
+            <td style="width: 45%;" class="contact-info">
+                <span>
+                    <img src="assets/communist2.svg" alt="政治面貌图标">
+                    政治面貌: 中共党员
+                </span>
+                <span>
+                    <img src="assets/phone-solid.svg" alt="手机图标">
+                    手机：(+86) 178-6426-3813
+                </span>
+                <span>
+                    <img src="assets/envelope-solid.svg" alt="邮箱图标">
+                    Email：kangdyngq@outlook.com
+                </span>
+            </td>
+            <!-- 修改照片单元格 -->
+            <td style="width: 15%;" class="photo-cell">
+                <div class="portrait-container">
+                    <img src="assets/kyy.jpg" alt="个人照片">
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- 工作经历 -->
+    <h2>
+        <img src="assets/briefcase-solid.svg" alt="工作经历图标">
+        工作经历 | Experience
+    </h2>
+
+    <!-- 工作经历 -->
+    <div class="company-info">
+        <div class="company-logo-container">
+            <img src="assets/mdpi2.png" alt="MDPI公司logo" class="company-logo">
+        </div>
+        <div class="company-text">
+            <div class="company-line">
+                <strong>2021.03 ～ 2021.12</strong> &emsp; 
+                <strong>曼迪匹艾(北京)科技服务有限公司</strong> &emsp; 
+                <span class="job-title"><strong>期刊编辑(实习)</strong></span>
+            </div>
+            <div class="company-line">
+                <strong>2021.12 ～ &nbsp; &nbsp;至&nbsp;今   </strong> &nbsp;&emsp; 
+                <strong>曼迪匹艾(北京)科技服务有限公司</strong> &emsp; 
+                <span class="job-title"><strong>期刊编辑(正式)</strong></span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 将blockquote改为分条展示 -->
+    <div class="company-description">
+        <ul>
+            <li><strong>MDPI</strong>是全球领先的<strong>Open Access</strong>(开放获取)学术出版公司之一，与传统期刊的核心区别在于是由作者付费，期刊出版，所有读者免费阅读。MDPI下设496本期刊，我所在的《Genes》期刊是其中之一，影响因子为2.8；</li>
+            <li>加入Genes的这五年，从最初<strong>稿件管控</strong>，负责稿件的同行评审等与作者、专家、期刊三方协同推进的出版全流程，高效、规范地推动执行；
+            到后来的<strong>特刊统筹</strong>，邀请学者建特刊，利用特刊来带动更多且更精准的投稿，对期刊的发文量、学术的高效传播做出了贡献；
+            与此同时，又负责科室内的<strong>组织培训</strong>工作，组织相关课程，助力科室人员数据的提升，同时，锻炼了个人的组织及表达能力。
+           </ul>
+    </div>
+
+    <!-- 稿件管控 -->
+    <div class="section-item">
+        <p><strong>稿件管控</strong>：<em>一篇稿件从投稿到发表 是如何流转的</em></p>
+        <ul>
+            <li><strong>学术使命</strong>：公开、公正、严谨、严格地把控稿件处理流程，遵守学术出版道德，保证高质量的稿件可以顺利发表、低质量的稿件能够被有效拒绝，赢得外部学者对我们专业服务的广泛认可和深度信任，提升期刊和公司的声誉，将有效促进期刊获得充足的稿件，助力期刊影响力提升的良性循环。</li>
+            <li><strong>处理流程</strong>：作者投稿后，期刊会进行质量检查，检查稿件是否符合期刊的目标与范围，确认稿件内容及其学术价值等，质量差的稿件会在此阶段直接拒稿，其他稿件进入同行评审。期刊会从公司数据库、谷歌学术等寻找合适的审稿人，收集两份合格的审稿报告，根据报告内容（可能是接受/小修/大修/拒稿），联系作者进行小修/大修，收到两份拒稿报告的稿件，在此阶段可能会直接拒稿；作者修改完成后，将修改后的手稿和逐点回复信重新提交到系统中，期刊将邀请给大修报告的审稿人进行复审，之后会邀请专家做最终决定（接收/大修/拒稿），稿件接收后，期刊会给作者发送正式接受邮件，并负责稿件出版。</li>
+            <li><strong>数据体现</strong>：2021年3月至12月期间，我经手处理并成功发表218篇文章，平均处理周期为34天。此外，我还协助指导与培养了2名新同事，均提前一个月转正。</li>
+        </ul>
+    </div>
+
+    <!-- 特刊统筹 -->
+    <div class="section-item">
+        <p><strong>特刊统筹</strong>：<em>特刊聚焦领域前沿方向，是稿件集中性的载体</em></p>
+        <ul>
+            <li><strong>特刊及目的</strong>：特刊(Special Issue)，专门收集前沿领域的文章，由领域内资深专家担任客座编辑(Guest Editor)来领导特刊，这是借助专家的学术影响力，与相应领域的学者取得联系，并获得一些投稿，能有效提升期刊在细分领域的投稿量与学术声量。</li>
+            <li><strong>Guest Editor筛选</strong>：专家和期刊的关系是双向选择、互利共赢，专家会考量期刊的影响因子，在此期刊上编辑特刊是否可以提升自己的学术影响力，扩展并深化学术人脉；期刊要保证专家的专业领域与特刊相符，H指数合格，近五年发表了足够多的论文以保持该领域的最新水平，同时，也要确保Guest Editor不得在PubPeer，Retraction Watch等有争议历史，以确保拥有足够的专业技能来领导特刊、有足够的学术影响力来保证特刊能实现8-10篇的发文目标。面对这种双向选择，面对这种双向选择，为了提升学者的同意率，编辑首先要确定好前沿热门topic，要限制好学者的资质，H-index在10-20的年轻的副教授及博士学者同意概率较大，同时邀请时，对于学者的研究兴趣要把握准确。同时，学者如果要提出问题，要及时、准确地向学者解答。学者同意后，编辑要与GE建立清晰透明的沟通渠道，定期向GE汇报特刊最新动态，并及时解决GE的所有疑问，以确保特刊的成功发行。交流中要注意坦诚、清晰，也要注意文化的差异。特刊数量累积起来后，新特刊创建和旧特刊维护的时间可能不能兼顾，要做好时间安排，确保项目顺利推进。</li>
+            <li><strong>多渠道宣传</strong>：邀请客座编辑在其学术网络及参与的相关会议中推广特刊；同时，通过期刊官网、期刊社交媒体(LinkedIn, X等)等宣传特刊，提升特刊曝光度。让更多人了解到特刊，并考虑向特刊投稿。</li>
+            <li><strong>多特刊并行</strong>：运用项目管理方法，通过月计划、周计划来安排已有特刊的跟进以及新特刊的创建，区分优先级，并定时复盘，确保在开特刊数量保持在20左右，保证有稳定的投稿和发表。</li>
+            <li><strong>关键成果</strong>：2021年8月创建特刊以来，我已成功上线81个特刊，与国内51位学者、欧美87位学者实现合作，发表384篇文章，累计被引用1892次。</li>
+        </ul>
+    </div>
+    
+    <!-- 科室培训 -->
+    <div class="section-item">
+        <p><strong>科室培训</strong>：<em>高效提升科室同事数据，积累学术出版知识，助力科室人才梯队的搭建</em></p>
+        <ul>
+            <li><strong>主要工作</strong>：担任科室培训负责人(Section Training Leader)，领导7位同事，协助科长组织科室培训，积极配合培训部门保证公司培训课程在科室层面的落地。</li>
+            <li><strong>具体实施</strong>：日常培训：统计科室成员的培训需求，设计并组织多种形式(如线下课程、案例分享、工作坊等)的培训课程，培训主题集中在稿件处理、特刊新建及维护、学术出版道德等方面，会优先邀请业绩突出或具备专项技能的同事担任讲师，确保培训内容贴近业务、实用性强，丰富专业知识，提升专业技能，提升个人绩效，助力期刊数据的发展；岗前培训：为协助科室筛选合格的新员工，在候选人通过初次面试之后，会组织候选人线参加岗前培训，岗前培训主要有审稿人筛选和稿件排版两个部分，根据候选人的反馈，出该候选人与这项工作的适配度，综合评判该候选人是否适合助理编辑这一职位；认证考试：是考验大家胜任编辑各项工作的参考因素之一，也是科室人员培养和晋升的评判标准之一，我会定期跟进，确保大家及时通过，助力科室的人才培养。</li>
+            <li><strong>关键成果</strong>：自2024年6月担任STL以来，已组织285场培训，累计参与12001人次，其中评分在9.6分(满分10分)以上的课程有200节。</li>
+        </ul>
+    </div>
+
+    <!-- 教育经历 -->
+    <h2 class="compact-title">
+        <img src="assets/教育d.svg" alt="教育经历图标">
+        教育经历 | Education
+    </h2>
+    <div class="content-card compact-card">
+        <ul>
+            <li>硕士，山东科技大学，英语笔译，2019.09~2021.12；</li>
+            <li>本科，山东科技大学，英语，2015.09~2019.07；</li>
+            <li><strong>英语专业八级</strong>(TEM8)，<strong>CATTI三级笔译</strong>，大学生英语六级(CET-6)；</li>
+        </ul>
+    </div>
+
+    <!-- 获奖经历 -->
+    <h2 class="compact-title">
+        <img src="assets/奖杯2.svg" alt="获奖经历图标">
+        获奖经历｜Awards
+    </h2>
+    <div class="content-card compact-card">
+        <ul>
+            <li>全国大学生英语竞赛，一等奖，2020.11；</li>
+            <li>第九届全国口译大赛(英语)山东赛区，一等奖，2020.07；</li>
+            <li>MDPI 优秀员工，top 0.5%，2024</li>
+        </ul>
+    </div>
+
+    <!-- 科研经历 -->
+    <h2 class="compact-title">
+        <img src="assets/考核评价.svg" alt="科研经历图标">
+        科研经历 | Research
+    </h2>
+    <div class="content-card compact-card">
+        <ul>
+            <li>Cryptomining Malware Detection Based on Multi-modal Features Deep Learning，中国通信，2022；</li>
+            <li>《计算机领域英语文献翻译方法研究》，海外英语，2022；</li>
+        </ul>
+    </div>
+
+    <!-- 基本技能 -->
+    <h2 class="compact-title">
+        <img src="assets/tools-solid.svg" alt="技能图标">
+        基本技能 | About me
+    </h2>
+    <div class="content-card compact-card">
+        <ul>
+            <li>五年出版社核心编辑经验，能快速胜任并创造价值；英语专业功底扎实，确保学术沟通精准、专业；性格耐心细致，善于处理出版各环节的协调与服务工作。</li>
+            <li>英语专业背景，具备出色的双语沟通与教学支持能力；出版工作锤炼出高度严谨性，能确保教育内容准确、优质；善于组织学习、激发他人潜能，促进团队成长。</li>
+        </ul>
+    </div>
+
+</body>
+</html>
